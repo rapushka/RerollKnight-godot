@@ -1,5 +1,3 @@
-using Godot;
-
 namespace RerollKnight;
 
 public class InMainMenuAppState : IAppState
@@ -8,8 +6,6 @@ public class InMainMenuAppState : IAppState
 
 	public async void Enter(StateMachineBase<IAppState> stateMachine)
 	{
-		GD.Print($"Hello from {nameof(InMainMenuAppState)}");
-
 		await _ui.LoadingCurtain.Hide();
 	}
 }

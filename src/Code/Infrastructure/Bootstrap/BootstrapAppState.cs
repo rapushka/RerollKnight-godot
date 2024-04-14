@@ -1,3 +1,5 @@
+using Godot;
+
 namespace RerollKnight;
 
 public class BootstrapAppState : IAppState
@@ -7,7 +9,6 @@ public class BootstrapAppState : IAppState
 	public async void Enter(StateMachineBase<IAppState> stateMachine)
 	{
 		await _ui.LoadingCurtain.Show(immediate: true);
-
 		stateMachine.Enter<InMainMenuAppState>();
 	}
 }

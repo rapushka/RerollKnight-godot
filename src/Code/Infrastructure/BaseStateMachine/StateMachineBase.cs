@@ -16,6 +16,7 @@ public abstract class StateMachineBase<TState>
 		(CurrentState as IExitState)?.Exit();
 
 		CurrentState = _states.GetOrAdd<TConcreteState>();
+		Godot.GD.PrintRich($"[color=green]state machine:[/color] Enter {typeof(TConcreteState).Name}");
 		CurrentState.Enter(this);
 	}
 }
