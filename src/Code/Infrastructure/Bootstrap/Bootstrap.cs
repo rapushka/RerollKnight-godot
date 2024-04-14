@@ -9,14 +9,8 @@ public partial class Bootstrap : Node
 
 	private static AppStateMachine AppStateMachine => DiContainer.Instance.Get<AppStateMachine>();
 
-	public override void _EnterTree()
-	{
-		GD.Print("> bootstrap enter tree");
-	}
-
 	public override void _Ready()
 	{
-		GD.Print("> bootstrap ready");
 		Installer.InstallBindings();
 
 		AppStateMachine.Enter<BootstrapAppState>();

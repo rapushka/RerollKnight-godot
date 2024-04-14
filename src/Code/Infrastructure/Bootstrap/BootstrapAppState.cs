@@ -1,5 +1,3 @@
-using Godot;
-
 namespace RerollKnight;
 
 public class BootstrapAppState : IAppState
