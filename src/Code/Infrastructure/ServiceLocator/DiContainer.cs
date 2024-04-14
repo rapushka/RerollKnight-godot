@@ -1,10 +1,11 @@
 namespace RerollKnight;
 
-public class Container
+/// There's no Dependency Injection, but nah 
+public class DiContainer
 {
-	private static Container _instance;
+	private static DiContainer _instance;
 
-	public static Container Instance => _instance ??= new Container();
+	public static DiContainer Instance => _instance ??= new DiContainer();
 
 	public T Get<T>() => Dependency<T>.Value;
 

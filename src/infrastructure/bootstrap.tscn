@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://27oqm2i3q3gi"]
 
 [ext_resource type="Script" path="res://Code/Infrastructure/Bootstrap/Bootstrap.cs" id="1_728fp"]
-[ext_resource type="Script" path="res://Code/Infrastructure/Entitas/SystemsService.cs" id="2_527xs"]
+[ext_resource type="Script" path="res://Code/Infrastructure/Bootstrap/BootstrapInstaller.cs" id="3_ggonv"]
 
-[node name="Bootstrap" type="Node" node_paths=PackedStringArray("SystemsService")]
+[node name="Bootstrap" type="Node" node_paths=PackedStringArray("Installer")]
 script = ExtResource("1_728fp")
-SystemsService = NodePath("SystemsService")
+Installer = NodePath("BootstrapInstaller")
 
-[node name="SystemsService" type="Node" parent="."]
-script = ExtResource("2_527xs")
+[node name="BootstrapInstaller" type="Node" parent="."]
+script = ExtResource("3_ggonv")
