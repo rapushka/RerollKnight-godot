@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://27oqm2i3q3gi"]
+
+[ext_resource type="Script" path="res://Code/Infrastructure/Bootstrap/Bootstrap.cs" id="1_728fp"]
+[ext_resource type="Script" path="res://Code/Infrastructure/Entitas/SystemsService.cs" id="2_527xs"]
+
+[node name="Bootstrap" type="Node" node_paths=PackedStringArray("SystemsService")]
+script = ExtResource("1_728fp")
+SystemsService = NodePath("SystemsService")
+
+[node name="SystemsService" type="Node" parent="."]
+script = ExtResource("2_527xs")

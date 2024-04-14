@@ -11,12 +11,19 @@ config_version=5
 [application]
 
 config/name="RerollKnight"
-config/features=PackedStringArray("4.2", "GL Compatibility")
+run/main_scene="res://infrastructure/bootstrap.tscn"
+config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="RerollKnight"
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "orange"
+}
 
 [rendering]
 
