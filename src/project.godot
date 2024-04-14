@@ -22,7 +22,12 @@ project/assembly_name="RerollKnight"
 [file_customization]
 
 folder_colors={
-"res://addons/": "orange"
+"res://Code/": "red",
+"res://UI/": "pink",
+"res://addons/": "orange",
+"res://gameplay_location/": "yellow",
+"res://infrastructure/": "blue",
+"res://main menu/": "green"
 }
 
 [rendering]

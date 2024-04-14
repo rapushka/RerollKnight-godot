@@ -5,12 +5,14 @@ namespace RerollKnight;
 [GlobalClass]
 public partial class Bootstrap : Node
 {
-	[Export] private SystemsService SystemsService { get; set; }
+	[Export] private BootstrapInstaller Installer { get; set; }
+
+	private static AppStateMachine AppStateMachine => DiContainer.Instance.Get<AppStateMachine>();
 
 	public override void _Ready()
 	{
-		Container.Instance.Register<ISystemsService>(SystemsService);
+		Installer.InstallBindings();
 
-		// SystemsService.Add<TestFeature>();
+		AppStateMachine.Enter<BootstrapAppState>();
 	}
 }
