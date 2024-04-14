@@ -11,6 +11,6 @@ public partial class Bootstrap : Node
 	{
 		Container.Instance.Register<ISystemsService>(SystemsService);
 
-		SystemsService.Add<TestFeature>(); // TODO: remove
+		// SystemsService.Add<TestFeature>();
 	}
 }
