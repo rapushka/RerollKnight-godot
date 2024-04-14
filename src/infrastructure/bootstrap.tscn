@@ -19,4 +19,5 @@ script = ExtResource("4_snfan")
 LoadingCurtain = NodePath("loading curtain")
 
 [node name="loading curtain" parent="GUI" instance=ExtResource("5_17d6v")]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1

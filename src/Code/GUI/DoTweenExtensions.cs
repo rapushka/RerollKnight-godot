@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Godot;
 
@@ -7,27 +8,30 @@ public static class DoTweenExtensions
 {
 	public static async Task DoModulateFade(this CanvasItem @this, float target, float duration)
 	{
-		var delta = target - @this.Modulate.A;
-		var milliseconds = duration * 1_000;
-		if (milliseconds.ApproximatelyEquals(0))
-			milliseconds = 1;
-
-		var step = delta / milliseconds;
-
-		var counter = 1_000; // TODO: it's here to prevent endless loop
-		while (@this.Modulate.A.ApproximatelyEquals(target))
+		if (duration.ApproximatelyEquals(0f))
 		{
-			var modulate = @this.Modulate;
-			modulate.A += step;
-			@this.Modulate = modulate;
-
-			await Task.Yield();
-
-			if (counter-- == 0)
-				break;
+			@this.Modulate = @this.Modulate with { A = target };
+			return;
 		}
 
-		if (counter <= 0)
-			GD.PrintRich("[color=red]there was an endless loop[/color]");
+		var fromValue = @this.Modulate.A;
+		var timer = @this.GetTree().CreateTimer(duration);
+		var counter = 1_000;
+
+		while (timer.TimeLeft > 0)
+		{
+			var elapsedTime = duration - (float)timer.TimeLeft;
+			var normalized = elapsedTime / duration;
+			var nextAlpha = Mathf.Lerp(fromValue, target, normalized);
+
+			@this.Modulate = @this.Modulate with { A = nextAlpha };
+			await Task.Delay(TimeSpan.FromMilliseconds(1));
+
+			if (counter-- < 0)
+			{
+				GD.PrintRich("[color=red]endless loop[/color]");
+				break;
+			}
+		}
 	}
 }
