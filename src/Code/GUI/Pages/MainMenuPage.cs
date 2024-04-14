@@ -7,13 +7,11 @@ public partial class MainMenuPage : Control
 
 	private void OnPlayButtonClicked()
 	{
-		GD.Print($"clicked");
-		Ui.StartGame();
+		Ui.StartRun();
 	}
 
 	private void OnQuitButtonClicked()
 	{
-		GD.Print($"quit plz");
-		GetTree().Quit();
+		Ui.QuitGame();
 	}
 }

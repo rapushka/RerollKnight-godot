@@ -1,6 +1,6 @@
 namespace RerollKnight;
 
-public class StartNewGameAppState : IAppState
+public class StartNewRunAppState : IAppState
 {
 	private readonly IUiMediator _ui = DiContainer.Instance.Get<IUiMediator>();
 	private readonly ILocationLoader _locationLoader = DiContainer.Instance.Get<ILocationLoader>();

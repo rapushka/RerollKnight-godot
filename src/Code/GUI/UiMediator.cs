@@ -6,7 +6,10 @@ public interface IUiMediator
 {
 	LoadingCurtain LoadingCurtain { get; }
 
-	void StartGame();
+	void StartRun();
+	void EndRun();
+
+	void QuitGame();
 }
 
 public partial class UiMediator : Control, IUiMediator
@@ -15,5 +18,8 @@ public partial class UiMediator : Control, IUiMediator
 
 	[Export] public LoadingCurtain LoadingCurtain { get; private set; }
 
-	public void StartGame() => StateMachine.Enter<StartNewGameAppState>();
+	public void StartRun() => StateMachine.Enter<StartNewRunAppState>();
+	public void EndRun()   => StateMachine.Enter<EndRunAppState>();
+
+	public void QuitGame() => StateMachine.Enter<QuitAppState>();
 }
