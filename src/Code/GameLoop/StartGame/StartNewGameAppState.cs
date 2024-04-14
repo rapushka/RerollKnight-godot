@@ -1,6 +1,6 @@
 namespace RerollKnight;
 
-public class InMainMenuAppState : IAppState
+public class StartNewGameAppState : IAppState
 {
 	private readonly IUiMediator _ui = DiContainer.Instance.Get<IUiMediator>();
 	private readonly ILocationLoader _locationLoader = DiContainer.Instance.Get<ILocationLoader>();
@@ -8,8 +8,10 @@ public class InMainMenuAppState : IAppState
 
 	public async void Enter(StateMachineBase<IAppState> stateMachine)
 	{
-		await _locationLoader.LoadMainMenu();
-		_pagesLoader.OpenMainMenu();
+		await _ui.LoadingCurtain.Show();
+
+		await _locationLoader.LoadGameplay();
+		_pagesLoader.OpenGameplay();
 
 		await _ui.LoadingCurtain.Hide();
 	}

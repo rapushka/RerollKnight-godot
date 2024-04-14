@@ -27,6 +27,14 @@ GameplayScene = ExtResource("5_xuiwt")
 script = ExtResource("4_snfan")
 LoadingCurtain = NodePath("loading curtain")
 
+[node name="Page holder" type="Control" parent="GUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="loading curtain" parent="GUI" instance=ExtResource("5_17d6v")]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1

@@ -11,25 +11,25 @@ public interface ILocationLoader
 
 [GlobalClass]
 public partial class LocationLoader : Node, ILocationLoader // TODO: warm-up
-{
+{ // TODO: mb merge with PageLoader?
 	[Export] public PackedScene MainMenuScene { get; set; }
 	[Export] public PackedScene GameplayScene { get; set; }
 
-	private Node _currentLevel;
+	private Node _currentLocation;
 
 	public async Task LoadMainMenu() => await Load(MainMenuScene);
 	public async Task LoadGameplay() => await Load(GameplayScene);
 
 	private Task Load(PackedScene scene)
 	{
-		if (_currentLevel is not null)
+		if (_currentLocation is not null)
 		{
-			RemoveChild(_currentLevel);
-			_currentLevel.QueueFree();
+			RemoveChild(_currentLocation);
+			_currentLocation.QueueFree();
 		}
 
-		_currentLevel = scene.Instantiate();
-		AddChild(_currentLevel);
+		_currentLocation = scene.Instantiate();
+		AddChild(_currentLocation);
 
 		return Task.CompletedTask;
 	}
