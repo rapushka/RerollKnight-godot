@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://27oqm2i3q3gi"]
+[gd_scene load_steps=12 format=3 uid="uid://27oqm2i3q3gi"]
 
 [ext_resource type="Script" path="res://Code/Infrastructure/Bootstrap/Bootstrap.cs" id="1_728fp"]
 [ext_resource type="Script" path="res://Code/Infrastructure/Bootstrap/BootstrapInstaller.cs" id="3_ggonv"]
@@ -8,15 +8,19 @@
 [ext_resource type="PackedScene" uid="uid://bdbf35g5ow7g3" path="res://main menu/main_menu_location.tscn" id="4_wdcfs"]
 [ext_resource type="PackedScene" uid="uid://4ym23qnumhq1" path="res://infrastructure/loading_curtain.tscn" id="5_17d6v"]
 [ext_resource type="PackedScene" uid="uid://cb14db3ar65uo" path="res://gameplay_location/gameplay_location.tscn" id="5_xuiwt"]
+[ext_resource type="Script" path="res://Code/GUI/PagesLoader.cs" id="8_xyhr0"]
+[ext_resource type="PackedScene" uid="uid://cn6r8ruyed3h4" path="res://main menu/main_menu_page.tscn" id="9_eylmj"]
+[ext_resource type="PackedScene" uid="uid://c8mx1l14ab8x4" path="res://gameplay_location/gameplay_page.tscn" id="10_fv0u7"]
 
 [node name="Bootstrap" type="Node" node_paths=PackedStringArray("Installer")]
 script = ExtResource("1_728fp")
 Installer = NodePath("Bootstrap Installer")
 
-[node name="Bootstrap Installer" type="Node" parent="." node_paths=PackedStringArray("UiMediator", "LocationLoader")]
+[node name="Bootstrap Installer" type="Node" parent="." node_paths=PackedStringArray("UiMediator", "LocationLoader", "PagesLoader")]
 script = ExtResource("3_ggonv")
 UiMediator = NodePath("../GUI")
 LocationLoader = NodePath("LocationLoader")
+PagesLoader = NodePath("../GUI/Page holder")
 
 [node name="LocationLoader" type="Node" parent="Bootstrap Installer"]
 script = ExtResource("3_i636i")
@@ -34,6 +38,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("8_xyhr0")
+MainMenuPageScene = ExtResource("9_eylmj")
+GameplayPageScene = ExtResource("10_fv0u7")
 
 [node name="loading curtain" parent="GUI" instance=ExtResource("5_17d6v")]
 modulate = Color(1, 1, 1, 0)
