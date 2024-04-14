@@ -1,14 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://27oqm2i3q3gi"]
+[gd_scene load_steps=6 format=3 uid="uid://27oqm2i3q3gi"]
 
 [ext_resource type="Script" path="res://Code/Infrastructure/Bootstrap/Bootstrap.cs" id="1_728fp"]
 [ext_resource type="Script" path="res://Code/Infrastructure/Bootstrap/BootstrapInstaller.cs" id="3_ggonv"]
 [ext_resource type="PackedScene" uid="uid://4gsa18q5kjor" path="res://UI/gui.tscn" id="3_wkaxj"]
+[ext_resource type="Script" path="res://Code/GUI/UiMediator.cs" id="4_snfan"]
+[ext_resource type="PackedScene" uid="uid://4ym23qnumhq1" path="res://infrastructure/loading_curtain.tscn" id="5_17d6v"]
 
 [node name="Bootstrap" type="Node" node_paths=PackedStringArray("Installer")]
 script = ExtResource("1_728fp")
 Installer = NodePath("BootstrapInstaller")
 
-[node name="BootstrapInstaller" type="Node" parent="."]
+[node name="BootstrapInstaller" type="Node" parent="." node_paths=PackedStringArray("UiMediator")]
 script = ExtResource("3_ggonv")
+UiMediator = NodePath("../GUI")
 
-[node name="GUI" parent="." instance=ExtResource("3_wkaxj")]
+[node name="GUI" parent="." node_paths=PackedStringArray("LoadingCurtain") instance=ExtResource("3_wkaxj")]
+script = ExtResource("4_snfan")
+LoadingCurtain = NodePath("loading curtain")
+
+[node name="loading curtain" parent="GUI" instance=ExtResource("5_17d6v")]
+layout_mode = 1

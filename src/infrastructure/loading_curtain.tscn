@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://4ym23qnumhq1"]
+[gd_scene load_steps=3 format=3 uid="uid://4ym23qnumhq1"]
+
+[ext_resource type="Script" path="res://Code/GUI/LoadingCurtain.cs" id="1_7nlot"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_we4m5"]
 font_size = 46
@@ -10,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7nlot")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

@@ -1,13 +1,15 @@
+using Godot;
+
 namespace RerollKnight;
 
-public class BootstrapAppState : IAppState
+public class InMainMenuAppState : IAppState
 {
 	private readonly IUiMediator _ui = DiContainer.Instance.Get<IUiMediator>();
 
 	public async void Enter(StateMachineBase<IAppState> stateMachine)
 	{
-		await _ui.LoadingCurtain.Show(immediate: true);
+		GD.Print($"Hello from {nameof(InMainMenuAppState)}");
 
-		stateMachine.Enter<InMainMenuAppState>();
+		await _ui.LoadingCurtain.Hide();
 	}
 }
