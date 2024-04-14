@@ -1,26 +1,26 @@
+using System.Threading.Tasks;
 using Godot;
-using Godot.Collections;
 
 namespace RerollKnight;
 
-public interface ILevelsLoader
+public interface ILocationLoader
 {
-	void LoadMainMenu();
-	void LoadGameplay();
+	Task LoadMainMenu();
+	Task LoadGameplay();
 }
 
 [GlobalClass]
-public partial class LevelsLoader : Node, ILevelsLoader // TODO: warm-up
+public partial class LocationLoader : Node, ILocationLoader // TODO: warm-up
 {
 	[Export] public PackedScene MainMenuScene { get; set; }
 	[Export] public PackedScene GameplayScene { get; set; }
 
 	private Node _currentLevel;
 
-	public void LoadMainMenu() => Load(MainMenuScene);
-	public void LoadGameplay() => Load(GameplayScene);
+	public async Task LoadMainMenu() => await Load(MainMenuScene);
+	public async Task LoadGameplay() => await Load(GameplayScene);
 
-	private void Load(PackedScene scene)
+	private Task Load(PackedScene scene)
 	{
 		if (_currentLevel is not null)
 		{
@@ -30,5 +30,7 @@ public partial class LevelsLoader : Node, ILevelsLoader // TODO: warm-up
 
 		_currentLevel = scene.Instantiate();
 		AddChild(_currentLevel);
+
+		return Task.CompletedTask;
 	}
 }
